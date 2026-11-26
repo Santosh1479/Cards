@@ -1,0 +1,413 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f9f3e9;
+    color: #765d40;
+    font-family: 'Cormorant Garamond', serif;
+    overflow: hidden;
+}
+
+#particles {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* OPENING COVER */
+
+.opening {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at center,
+        #fffdf6 0%,
+        #f6ead8 65%,
+        #e8d4b7 100%);
+
+    transition: opacity 1.8s ease,
+                transform 1.8s ease;
+}
+
+.opening.hide {
+    opacity: 0;
+    transform: scale(1.12);
+    pointer-events: none;
+}
+
+.cover-content {
+    width: 90%;
+    max-width: 650px;
+    padding: 65px 25px;
+    border: 1px solid #c3a16b;
+    outline: 1px solid #c3a16b;
+    outline-offset: -12px;
+    position: relative;
+    z-index: 2;
+    animation: coverReveal 2s ease;
+}
+
+.top-text {
+    letter-spacing: 4px;
+    font-size: 12px;
+}
+
+.cover-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(55px, 10vw, 95px);
+    color: #a98552;
+    margin: 25px 0;
+    font-weight: normal;
+}
+
+.cover-content h1 span {
+    font-size: 55px;
+}
+
+.small-ornament,
+.ornament {
+    color: #b18c55;
+    font-size: 30px;
+    margin: 20px;
+}
+
+.invitation-text {
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.date {
+    margin-top: 25px;
+    letter-spacing: 4px;
+    font-size: 17px;
+}
+
+/* TAP TO OPEN */
+
+#openBtn {
+    margin-top: 40px;
+    padding: 16px 32px;
+    border: 1px solid #b18c55;
+    background: transparent;
+    color: #997441;
+    font-family: inherit;
+    font-size: 15px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+    transition: 0.4s;
+}
+
+#openBtn:hover {
+    background: #b18c55;
+    color: white;
+    transform: scale(1.07);
+}
+
+#openBtn span {
+    color: #c6a36b;
+}
+
+.bottom-text {
+    margin-top: 40px;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+/* FLOWERS */
+
+.flower {
+    position: absolute;
+    font-size: 150px;
+    color: #c99c91;
+    opacity: 0.3;
+    text-shadow: 0 0 20px #e9c9bd;
+    animation: flowerFloat 7s ease-in-out infinite;
+}
+
+.flower-left {
+    top: 2%;
+    left: 2%;
+}
+
+.flower-right {
+    bottom: 2%;
+    right: 2%;
+    animation-delay: 2s;
+}
+
+/* MAIN SECTIONS */
+
+#main {
+    width: 100%;
+}
+
+.hero,
+.intro,
+.couple,
+.date-section,
+.details,
+.closing {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 70px 25px;
+}
+
+.hero {
+    background:
+        linear-gradient(#f8f0e4cc, #f8f0e4cc),
+        radial-gradient(circle, #d9b88b, #f9f3e9);
+}
+
+.section-label {
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+.hero h1,
+.closing h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(65px, 11vw, 110px);
+    color: #a98552;
+    margin: 30px 0;
+    font-weight: normal;
+}
+
+.hero-subtitle {
+    font-size: 28px;
+}
+
+.scroll-text {
+    margin-top: 100px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    animation: pulse 2s infinite;
+}
+
+.intro {
+    background: #fffaf1;
+}
+
+.intro h2,
+.couple h2,
+.date-section h2,
+.details h2,
+.closing h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(48px, 8vw, 75px);
+    color: #a98552;
+    font-weight: normal;
+    margin: 25px 0;
+}
+
+.intro > p:not(.section-label) {
+    max-width: 550px;
+    font-size: 22px;
+    line-height: 1.8;
+}
+
+.couple {
+    background: #eee1ce;
+}
+
+.couple-names {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    margin-top: 45px;
+}
+
+.couple-names h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    color: #a98552;
+    font-weight: normal;
+}
+
+.couple-names span {
+    font-size: 40px;
+}
+
+.couple-names p {
+    font-size: 17px;
+}
+
+/* WEDDING DATE */
+
+.date-section {
+    background: #fffaf1;
+}
+
+.calendar {
+    border: 1px solid #b18c55;
+    padding: 30px 55px;
+    margin: 25px;
+}
+
+.calendar h3 {
+    font-size: 90px;
+    font-weight: normal;
+    color: #a98552;
+}
+
+.calendar p {
+    letter-spacing: 4px;
+}
+
+.countdown {
+    display: flex;
+    gap: 30px;
+    margin-top: 35px;
+}
+
+.countdown div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.countdown span {
+    font-size: 35px;
+    color: #a98552;
+}
+
+.countdown small {
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* DETAILS */
+
+.details {
+    background: #eee1ce;
+}
+
+.details h3 {
+    font-size: 30px;
+    margin: 30px 0 10px;
+}
+
+.details p {
+    font-size: 21px;
+    margin: 5px;
+}
+
+.location-btn {
+    margin-top: 35px;
+    padding: 15px 35px;
+    border: 1px solid #a98552;
+    text-decoration: none;
+    color: #997441;
+    letter-spacing: 3px;
+}
+
+/* CLOSING */
+
+.closing {
+    background: #fffaf1;
+}
+
+.closing > p {
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+.thankyou {
+    margin-top: 70px;
+}
+
+/* SCROLL REVEAL */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity 1.2s ease,
+                transform 1.2s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ANIMATIONS */
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+}
+
+@keyframes flowerFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(10deg); }
+}
+
+@keyframes coverReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width: 600px) {
+
+    .cover-content {
+        padding: 60px 20px;
+    }
+
+    .top-text {
+        font-size: 9px;
+    }
+
+    .flower {
+        font-size: 85px;
+    }
+
+    .countdown {
+        gap: 15px;
+    }
+
+    .countdown span {
+        font-size: 25px;
+    }
+
+    .calendar {
+        padding: 25px 35px;
+    }
+
+    .couple-names {
+        gap: 15px;
+    }
+
+    .couple-names h3 {
+        font-size: 38px;
+    }
+}
