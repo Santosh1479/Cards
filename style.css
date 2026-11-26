@@ -9,7 +9,10 @@ html {
 }
 
 body {
-    background: #f9f3e9;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(224, 161, 84, 0.12), transparent 22%),
+        radial-gradient(circle at 85% 20%, rgba(178, 91, 109, 0.11), transparent 20%),
+        #f9f3e9;
     color: #765d40;
     font-family: 'Cormorant Garamond', serif;
     overflow: hidden;
@@ -37,10 +40,9 @@ body {
     overflow: hidden;
 
     background:
-        radial-gradient(circle at center,
-        #fffdf6 0%,
-        #f6ead8 65%,
-        #e8d4b7 100%);
+        radial-gradient(circle at 20% 15%, rgba(218, 157, 67, 0.22), transparent 16%),
+        radial-gradient(circle at 82% 78%, rgba(187, 70, 104, 0.16), transparent 18%),
+        radial-gradient(circle at center, #fffdf6 0%, #f7e4bd 58%, #dfb97f 100%);
 
     transition: opacity 1.8s ease,
                 transform 1.8s ease;
@@ -52,21 +54,65 @@ body {
     pointer-events: none;
 }
 
+.opening::before,
+.opening::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 18px;
+    background:
+        radial-gradient(circle, #bd6a7c 0 4px, transparent 5px) 0 0 / 28px 18px repeat-x;
+    opacity: 0.55;
+}
+
+.opening::before { top: 18px; }
+.opening::after { bottom: 18px; transform: rotate(180deg); }
+
+.mandala {
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    border: 2px dotted rgba(183, 115, 48, 0.34);
+    border-radius: 50%;
+    opacity: 0.75;
+    animation: mandalaSpin 35s linear infinite;
+}
+
+.mandala::before,
+.mandala::after {
+    content: "✦";
+    position: absolute;
+    inset: 28px;
+    border: 1px solid rgba(175, 91, 113, 0.28);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 72px;
+    color: rgba(183, 115, 48, 0.38);
+}
+
+.mandala::after {
+    inset: 72px;
+    border-style: double;
+    font-size: 30px;
+}
+
+.mandala-left { left: -120px; top: 8%; }
+.mandala-right { right: -120px; bottom: 8%; animation-direction: reverse; }
+
 .cover-content {
     width: 90%;
     max-width: 650px;
     padding: 65px 25px;
-    border: 1px solid #c3a16b;
-    outline: 1px solid #c3a16b;
-    outline-offset: -12px;
+    border: 2px solid #c3a16b;
+    outline: 1px solid rgba(188, 106, 124, 0.8);
+    outline-offset: -22px;
     position: relative;
     z-index: 2;
     animation: coverReveal 2s ease;
-}
-
-.top-text {
-    letter-spacing: 4px;
-    font-size: 12px;
+    background: rgba(255, 253, 246, 0.58);
+    box-shadow: 0 18px 70px rgba(143, 93, 42, 0.16);
 }
 
 .cover-content h1 {
@@ -75,6 +121,7 @@ body {
     color: #a98552;
     margin: 25px 0;
     font-weight: normal;
+    text-shadow: 0 5px 20px rgba(169, 133, 82, 0.16);
 }
 
 .cover-content h1 span {
@@ -176,8 +223,10 @@ body {
 
 .hero {
     background:
-        linear-gradient(#f8f0e4cc, #f8f0e4cc),
-        radial-gradient(circle, #d9b88b, #f9f3e9);
+        linear-gradient(135deg, rgba(255, 250, 241, 0.8), rgba(247, 218, 175, 0.78)),
+        radial-gradient(circle at 20% 30%, #c94f6d, transparent 24%),
+        radial-gradient(circle at 80% 70%, #d49a4a, transparent 22%),
+        #f8f0e4;
 }
 
 .section-label {
@@ -228,7 +277,10 @@ body {
 }
 
 .couple {
-    background: #eee1ce;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(201, 79, 109, 0.22), transparent 20%),
+        radial-gradient(circle at 80% 75%, rgba(212, 154, 74, 0.24), transparent 22%),
+        #eee1ce;
 }
 
 .couple-names {
@@ -301,7 +353,9 @@ body {
 /* DETAILS */
 
 .details {
-    background: #eee1ce;
+    background:
+        radial-gradient(circle at 50% 15%, rgba(192, 75, 105, 0.13), transparent 22%),
+        #eee1ce;
 }
 
 .details h3 {
@@ -321,6 +375,15 @@ body {
     text-decoration: none;
     color: #997441;
     letter-spacing: 3px;
+    background: #fffaf1;
+    box-shadow: 0 8px 24px rgba(153, 116, 65, 0.12);
+    transition: 0.35s ease;
+}
+
+.location-btn:hover {
+    background: #b18c55;
+    color: white;
+    transform: translateY(-3px);
 }
 
 /* CLOSING */
@@ -373,6 +436,61 @@ body {
         opacity: 1;
         transform: scale(1);
     }
+}
+
+@keyframes mandalaSpin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes musicPulse {
+    50% { box-shadow: 0 8px 32px rgba(201, 79, 109, 0.38); }
+}
+
+/* CULTURAL MUSIC CONTROL */
+.music-btn {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 300;
+    min-width: 52px;
+    height: 52px;
+    border: 1px solid rgba(169, 133, 82, 0.55);
+    border-radius: 30px;
+    background: rgba(255, 250, 241, 0.92);
+    color: #997441;
+    box-shadow: 0 8px 28px rgba(117, 80, 43, 0.18);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 14px;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 2px;
+}
+
+.music-icon {
+    font-size: 21px;
+}
+
+.music-label {
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 11px;
+    transition: max-width 0.5s ease;
+}
+
+.music-btn:hover .music-label,
+.music-btn.playing .music-label {
+    max-width: 100px;
+}
+
+.music-btn.playing {
+    background: linear-gradient(135deg, #a98552, #c94f6d);
+    color: white;
+    animation: musicPulse 2s infinite;
 }
 
 /* MOBILE RESPONSIVE */

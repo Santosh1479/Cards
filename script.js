@@ -4,6 +4,10 @@ const openBtn = document.getElementById("openBtn");
 // TAP TO OPEN
 openBtn.addEventListener("click", () => {
 
+    if (!isMusicPlaying) {
+        toggleMusic();
+    }
+
     opening.classList.add("hide");
 
     document.body.style.overflowY = "auto";
@@ -131,3 +135,34 @@ function animateParticles() {
 }
 
 animateParticles();
+
+
+// DEMO BACKGROUND SONG — replace this URL with your own calm song
+const DEMO_SONG_URL = "rathinamo-female-version-128-ytshorts.savetube.me.mp3";
+
+const musicBtn = document.getElementById("musicBtn");
+const musicLabel = musicBtn.querySelector(".music-label");
+const backgroundMusic = new Audio(DEMO_SONG_URL);
+backgroundMusic.loop = true;
+backgroundMusic.volume = 0.35;
+let isMusicPlaying = false;
+
+async function toggleMusic() {
+    if (isMusicPlaying) {
+        backgroundMusic.pause();
+        isMusicPlaying = false;
+    } else {
+        try {
+            await backgroundMusic.play();
+            isMusicPlaying = true;
+        } catch (error) {
+            console.warn("The demo song could not start:", error);
+        }
+    }
+
+    musicBtn.classList.toggle("playing", isMusicPlaying);
+    musicBtn.setAttribute("aria-pressed", String(isMusicPlaying));
+    musicLabel.textContent = isMusicPlaying ? "MUSIC ON" : "PLAY MUSIC";
+}
+
+musicBtn.addEventListener("click", toggleMusic);
